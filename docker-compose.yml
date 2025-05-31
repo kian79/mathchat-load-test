@@ -1,0 +1,21 @@
+services:
+  inference:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: azani/load_testing:latest
+    environment:
+      - HF_TOKEN=${HF_TOKEN}
+      - PHOENIX_API_KEY=${PHOENIX_API_KEY}
+    volumes:
+      - ./app:/app
+    working_dir: /app
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    ports:
+      - "8000:8000"
