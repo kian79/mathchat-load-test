@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: azani/load_testing:latest
+    image: kashfipour/load_testing:latest
     environment:
       - HF_TOKEN=${HF_TOKEN}
       - PHOENIX_API_KEY=${PHOENIX_API_KEY}
